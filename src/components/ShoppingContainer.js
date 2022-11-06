@@ -37,7 +37,8 @@ const ShoppingContainer = () => {
         </div>
       </div>
       <div className="bg-neutral-800 p-4 rounded-md max-h-[32rem] overflow-y-auto">
-        <div className="flex justify-end pb-5">
+        <div className="flex justify-between pb-5">
+          <h3>Cart List</h3>
           <button
             className="bg-red-500 px-2 py-1 text-md rounded-md"
             onClick={deleteCart}
@@ -46,9 +47,13 @@ const ShoppingContainer = () => {
           </button>
         </div>
         <div className="flex justify-around">
-          <h3>Cart List</h3>
-          <h4>Total Items:</h4>
-          <h4>Total Price: </h4>
+          <h4>
+            Total Items: {cart.reduce((acc, curr) => acc + curr.quantity, 0)}
+          </h4>
+          <h4>
+            Total Price:{" "}
+            {cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
+          </h4>
         </div>
         <div className="flex-col ">
           {cart.map((item) => (
