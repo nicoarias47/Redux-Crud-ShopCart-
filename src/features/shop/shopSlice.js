@@ -17,7 +17,27 @@ export const shopSlice = createSlice({
   name: "shop",
   initialState,
   reducers: {
-    addToCart: (state, action) => {},
+    addToCart: (state, action) => {
+      let newItem = state.products.find(
+        (product) => product.id === action.payload
+      );
+
+      const itemInCart = state.cart.find((item) => item.id === action.payload);
+
+      return itemInCart
+        ? {
+            ...state,
+            cart: state.cart.map((item) =>
+              item.id === action.payload
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            cart: [...state.cart, { ...newItem, quantity: 1 }],
+          };
+    },
     removeOneFromCart: (state, action) => {},
     removeAllFromCart: (state, action) => {},
     clearCart: (state, action) => {},

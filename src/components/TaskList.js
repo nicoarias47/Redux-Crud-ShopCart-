@@ -22,7 +22,7 @@ const TaskList = () => {
           Create Task
         </Link>
       </header>
-      <div className="grid grid-cols-2  gap-4 ">
+      <div className="grid grid-cols-2 gap-4 ">
         {tasks.map((task) => (
           <div key={task.id} className="bg-neutral-800 p-4 rounded-md">
             <header className="flex justify-between">
