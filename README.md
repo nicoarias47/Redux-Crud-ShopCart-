@@ -1,7 +1,9 @@
-# React Redux: Crud - Shop Cart
+# React Redux: Crud - Shop Cart - TailwindCss
 
-## Available Scripts
+### Proyecto realizado como practica de Redux Toolkit
 
-In the project directory, you can run:
+## Script Disponible
+
+Para correr el proyecto:
 
 ### `npm start`
