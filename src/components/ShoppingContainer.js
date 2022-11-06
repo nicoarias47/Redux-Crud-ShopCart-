@@ -16,9 +16,15 @@ const ShoppingContainer = () => {
 
   const addCart = (id) => dispatch(addToCart(id));
 
-  const removeFromCart = () => {};
+  const removeFromCart = (id, all = false) => {
+    if (all) {
+      dispatch(removeAllFromCart(id));
+    } else {
+      dispatch(removeOneFromCart(id));
+    }
+  };
 
-  const clearCart = () => {};
+  const deleteCart = () => dispatch(clearCart());
 
   return (
     <div className="container mx-xl grid grid-cols-2 w-full gap-5">
@@ -31,19 +37,28 @@ const ShoppingContainer = () => {
         </div>
       </div>
       <div className="bg-neutral-800 p-4 rounded-md max-h-[32rem] overflow-y-auto">
+        <div className="flex justify-end pb-5">
+          <button
+            className="bg-red-500 px-2 py-1 text-md rounded-md"
+            onClick={deleteCart}
+          >
+            clear
+          </button>
+        </div>
         <div className="flex justify-around">
           <h3>Cart List</h3>
           <h4>Total Items:</h4>
           <h4>Total Price: </h4>
         </div>
-        <div className="flex-col">
+        <div className="flex-col ">
           {cart.map((item) => (
-            <CartList key={uuid()} data={item} />
+            <CartList
+              key={uuid()}
+              data={item}
+              removeFromCart={removeFromCart}
+            />
           ))}
         </div>
-        <button className="bg-red-500 px-2 py-1 text-sm rounded-md">
-          Clear
-        </button>
       </div>
     </div>
   );

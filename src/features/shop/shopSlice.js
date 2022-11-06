@@ -38,12 +38,39 @@ export const shopSlice = createSlice({
             cart: [...state.cart, { ...newItem, quantity: 1 }],
           };
     },
-    removeOneFromCart: (state, action) => {},
-    removeAllFromCart: (state, action) => {},
-    clearCart: (state, action) => {},
+    removeOneFromCart: (state, action) => {
+      let itemInCart = state.cart.find((item) => item.id === action.payload);
+
+      return itemInCart.quantity > 1
+        ? {
+            ...state,
+            cart: state.cart.map((product) =>
+              product.id === action.payload
+                ? { ...product, quantity: product.quantity - 1 }
+                : product
+            ),
+          }
+        : {
+            ...state,
+            cart: state.cart.filter((product) => product.id !== action.payload),
+          };
+
+      //OTRA FORMA:
+      // if (itemInCart.quantity > 1) {
+      //   itemInCart.quantity -= 1;
+      // }
+    },
+    removeAllFromCart: (state, action) => {
+      return {
+        ...state,
+        cart: state.cart.filter((product) => product.id !== action.payload),
+      };
+    },
+    clearCart: (state, action) => initialState,
   },
 });
 
 export const { addToCart, removeOneFromCart, removeAllFromCart, clearCart } =
   shopSlice.actions;
+
 export default shopSlice.reducer;
