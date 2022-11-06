@@ -7,22 +7,18 @@ import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="bg-zinc-900 h-screen text-white">
-      <div className="h-full">
-        <Router>
-          <div className="flex-col h-full">
-            <NavBar />
-            <div className="flex items-center justify-center h-full">
-              <Routes>
-                <Route path="/" element={<TaskList />} />
-                <Route path="/create-task" element={<TaskForm />} />
-                <Route path="/edit-task/:id" element={<TaskForm />} />
-                <Route path="/shopping" element={<ShoppingContainer />} />
-              </Routes>
-            </div>
-          </div>
-        </Router>
-      </div>
+    <div className="bg-zinc-900 text-white">
+      <Router>
+        <NavBar />
+        <div className="min-h-screen flex items-center justify-center">
+          <Routes>
+            <Route path="/" element={<TaskList />} />
+            <Route path="/create-task" element={<TaskForm />} />
+            <Route path="/edit-task/:id" element={<TaskForm />} />
+            <Route path="/shopping" element={<ShoppingContainer />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }

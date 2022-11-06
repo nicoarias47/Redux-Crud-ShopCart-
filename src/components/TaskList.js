@@ -12,7 +12,7 @@ const TaskList = () => {
   };
 
   return (
-    <div className="w-4/6 ">
+    <div className="w-4/6 h-full">
       <header className="flex justify-between items-center py-4">
         <h1>Tasks {tasks.length}</h1>
         <Link
@@ -22,7 +22,7 @@ const TaskList = () => {
           Create Task
         </Link>
       </header>
-      <div className="grid grid-cols-2 gap-4 ">
+      <div className="grid grid-cols-2 gap-4">
         {tasks.map((task) => (
           <div key={task.id} className="bg-neutral-800 p-4 rounded-md">
             <header className="flex justify-between">

@@ -27,7 +27,7 @@ const ShoppingContainer = () => {
   const deleteCart = () => dispatch(clearCart());
 
   return (
-    <div className="container mx-xl grid grid-cols-2 w-full gap-5">
+    <div className="container mx-xl grid grid-cols-1 md:grid-cols-2 w-full gap-5">
       <div className="bg-neutral-800 p-4 rounded-md">
         <h3 className="pb-5">Shop List</h3>
         <div className="grid grid-cols-3 gap-5">
@@ -36,7 +36,7 @@ const ShoppingContainer = () => {
           ))}
         </div>
       </div>
-      <div className="bg-neutral-800 p-4 rounded-md max-h-[32rem] overflow-y-auto">
+      <div className="bg-neutral-800 p-4 rounded-md max-h-[36rem] overflow-y-auto ">
         <div className="flex justify-between pb-5">
           <h3>Cart List</h3>
           <button
@@ -51,11 +51,11 @@ const ShoppingContainer = () => {
             Total Items: {cart.reduce((acc, curr) => acc + curr.quantity, 0)}
           </h4>
           <h4>
-            Total Price:{" "}
-            {cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
+            Total Price: $
+            {cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}.00
           </h4>
         </div>
-        <div className="flex-col ">
+        <div className="flex-col">
           {cart.map((item) => (
             <CartList
               key={uuid()}
